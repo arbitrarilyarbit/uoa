@@ -37,6 +37,7 @@ CREATE TABLE IF NOT EXISTS `y3k_uoa`.`uoa_meta` (
 INSERT INTO `y3k_uoa`.`uoa_meta` (`id`, `user_id`, `first_name`, `last_name`, `company`, `phone`) VALUES
 	('1','1','Admin','Univ','UoA','0');
 
+
 DROP TABLE IF EXISTS `y3k_uoa`.`uoa_users`;
 CREATE TABLE IF NOT EXISTS `y3k_uoa`.`uoa_users` (
   `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
@@ -56,3 +57,12 @@ CREATE TABLE IF NOT EXISTS `y3k_uoa`.`uoa_users` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 INSERT INTO `y3k_uoa`.`uoa_users` (`id`, `group_id`, `ip_address`, `username`, `password`, `salt`, `email`, `activation_code`, `forgotten_password_code`, `created_on`, `last_login`, `active`) VALUES
 	('1','1','127.0.0.1','administrator','59beecdf7fc966e2f17fd8f65a4a9aeb09d4a3d4','9462e8eee0','admin@uoa.com','',NULL,'1268889823','1268889823','1');
+
+DROP TABLE IF EXISTS `y3k_uoa`.`uoa_applicants`;
+CREATE TABLE IF NOT EXISTS `y3k_uoa`.`uoa_applications` (
+  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+  `first_name` mediumint(8) unsigned NOT NULL,
+  `last_name` char(16) NOT NULL,
+  `created_on` int(11) unsigned NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
