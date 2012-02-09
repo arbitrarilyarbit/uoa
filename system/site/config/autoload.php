@@ -2,10 +2,9 @@
 
 $autoload['packages'] = array();
 
-//$autoload['libraries'] = array('session', 'database'); TODO
-$autoload['libraries'] = array();
+$autoload['libraries'] = array('session', 'database', 'parser');
 
-$autoload['helper'] = array('url', 'debug');
+$autoload['helper'] = array('url', 'form', 'language', 'debug');
 
 $autoload['config'] = array();
 
