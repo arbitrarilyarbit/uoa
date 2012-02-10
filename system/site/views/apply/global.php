@@ -10,6 +10,20 @@
 		<div class="topbar">
 			<div class="wrapper">
 				<div id="logo"><img height="55px" src="<?php echo base_url(); ?>assets/img/logo.png" alt="University of Allahabad" /></div>
+
+				<ul id="lang">
+					<li>
+						<a href="<?php echo site_url('apply/change/english'); ?>" title="English">
+							<img src="<?php echo base_url(); ?>assets/img/flags/gb.gif" alt="English" />
+						</a>
+					</li>
+					<li>
+						<a href="<?php echo site_url('apply/change/hindi'); ?>" title="Hindi">
+							<img src="<?php echo base_url(); ?>assets/img/flags/cn.gif" alt="Hindi" />
+						</a>
+					</li>
+				</ul>
+
 			</div>
 		</div>
 

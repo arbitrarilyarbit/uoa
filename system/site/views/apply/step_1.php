@@ -25,7 +25,9 @@
 				'value' => '',
 			));
 			?>
+		</div>
 
+		<div class="input">
 			<label for="middle_name">Middle Name</label>
 			<?php
 				echo form_input(array(
@@ -65,7 +67,9 @@
 				'value' => '',
 			));
 			?>
+		</div>
 
+		<div class="input">
 			<label for="mother_name">Mother&apos;s Name</label>
 			<?php
 				echo form_input(array(

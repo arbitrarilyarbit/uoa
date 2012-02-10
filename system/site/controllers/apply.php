@@ -2,16 +2,19 @@
 
 class Apply extends Public_Controller {
 
+	private $languages	= array ('english', 'hindi');
+
 	public function __construct() {
 		parent::__construct();
 
+		// Set the language
+		$this->_set_language();
+
 		$this->load->library('form_validation');
-		$this->load->model('apply/apply_m');
-		$this->lang->load('global');
+		//$this->load->model('apply/apply_m');
 	}
 
 	public function index() {
-		$this->lang->load('index');
 
 		$data['page_output'] = $this->load->view('apply/main', $this->lang->language, TRUE);
 
@@ -20,7 +23,6 @@ class Apply extends Public_Controller {
 	}
 
 	public function step_1() {
-		$this->lang->load('step_1');
 
 		// Set rules
 		$this->form_validation->set_rules(array(
@@ -43,7 +45,6 @@ class Apply extends Public_Controller {
 	}
 
 	public function step_2() {
-		$this->lang->load('step_2');
 
 		// Set rules
 		$this->form_validation->set_rules(array(
@@ -66,7 +67,6 @@ class Apply extends Public_Controller {
 	}
 
 	public function step_3() {
-		$this->lang->load('step_3');
 
 		// Set rules
 		$this->form_validation->set_rules(array(
@@ -89,19 +89,19 @@ class Apply extends Public_Controller {
 	}
 
 	public function step_4() {
-		$this->lang->load('step_4');
 
 		// Set rules
 		$this->form_validation->set_rules(array(
 			array(
 				'field' => 'pic',
 				'label'	=> 'Photograph',
-				'rules'	=> 'trim|required'
+				'rules'	=> 'trim'
 			)
 		));
 
 		// If the form validation passed
 		if ( $this->form_validation->run() ) {
+			$this->_fileUpload();
 			redirect('apply/review');
 		}
 
@@ -112,7 +112,6 @@ class Apply extends Public_Controller {
 	}
 
 	public function review() {
-		$this->lang->load('review');
 
 		$data['page_output'] = $this->load->view('apply/review', $this->lang->language, TRUE);
 
@@ -121,7 +120,6 @@ class Apply extends Public_Controller {
 	}
 
 	public function complete() {
-		$this->lang->load('complete');
 
 		$data['page_output'] = $this->load->view('apply/complete', $this->lang->language, TRUE);
 
@@ -129,4 +127,48 @@ class Apply extends Public_Controller {
 		$this->load->view('apply/global', $data);
 	}
 
+	public function change($language) {
+		if (in_array($language, $this->languages)) {
+			$this->session->set_userdata('language', $language);
+		}
+
+		redirect('apply');
+	}
+
+	private function _set_language() {
+
+		if (in_array($this->session->userdata('language'), $this->languages)) {
+			$this->config->set_item('language', $this->session->userdata('language'));
+		}
+
+		// let's load the language file belonging to the page i.e. method
+		$lang_file = $this->config->item('language') . '/' . $this->router->fetch_method() . '_lang';
+		if (is_file(realpath(dirname(__FILE__) . '/../language/' . $lang_file . EXT))) {
+			$this->lang->load($this->router->fetch_method());
+		}
+
+		$this->lang->load('global');
+	}
+
+	private function _fileUpload() {
+		$config['upload_path'] = './uploads/';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size'] = '300';
+		$config['max_width'] = '400';
+		$config['max_height'] = '300';
+		$config['encrypt_name'] = TRUE;
+
+		/*if (is_uploaded_file($_FILES['userfile']['tmp_name'])) {
+			$this->load->library('upload', $config);
+			$this->upload->do_upload('userfile');
+		}*/
+
+		$this->load->library('upload', $config);
+
+		if ( ! $this->upload->do_upload()) {
+			$error = array('error' => $this->upload->display_errors());
+		} else {
+			$data = array('upload_data' => $this->upload->data());
+		}
+	}
 }

@@ -7,7 +7,7 @@
 	<p><?php echo lang('text'); ?></p>
 </div>
 
-<?php echo form_open(uri_string(), 'id="install_frm"'); ?>
+<?php echo form_open_multipart(uri_string(), 'id="install_frm"'); ?>
 
 	<div class="section title">
 		<h3><?php echo lang('first_header'); ?></h3>
@@ -18,10 +18,9 @@
 		<div class="input">
 			<label for="pic">Photograph</label>
 			<?php
-				echo form_input(array(
-					'id' => 'pic',
-					'name' => 'pic',
-					'value' => ''
+				echo form_upload(array(
+					'id' => 'userfile',
+					'name' => 'userfile'
 				));
 			?>
 		</div>
