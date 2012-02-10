@@ -13,14 +13,10 @@ class Apply extends Public_Controller {
 	public function index() {
 		$this->lang->load('index');
 
-		$data = array();
-
-		$data = array_merge((array) $data, $this->lang->language);
+		$data['page_output'] = $this->load->view('apply/main', $this->lang->language, TRUE);
 
 		// Load the view file
-		$this->load->view('apply/global', array(
-			'page_output' => $this->parser->parse('apply/main', $data, TRUE)
-		));
+		$this->load->view('apply/global', $data);
 	}
 
 	public function step_1() {
@@ -40,14 +36,10 @@ class Apply extends Public_Controller {
 			redirect('apply/step_2');
 		}
 
-		$data = array();
-		
-		$data = array_merge((array) $data, $this->lang->language);
+		$data['page_output'] = $this->load->view('apply/step_1', $this->lang->language, TRUE);
 
 		// Load the view file
-		$this->load->view('apply/global', array(
-			'page_output' => $this->parser->parse('apply/step_1', $data, TRUE)
-		));
+		$this->load->view('apply/global', $data);
 	}
 
 	public function step_2() {
@@ -67,14 +59,10 @@ class Apply extends Public_Controller {
 			redirect('apply/step_3');
 		}
 
-		$data = array();
-		
-		$data = array_merge((array) $data, $this->lang->language);
+		$data['page_output'] = $this->load->view('apply/step_2', $this->lang->language, TRUE);
 
 		// Load the view file
-		$this->load->view('apply/global', array(
-			'page_output' => $this->parser->parse('apply/step_2', $data, TRUE)
-		));
+		$this->load->view('apply/global', $data);
 	}
 
 	public function step_3() {
@@ -94,14 +82,10 @@ class Apply extends Public_Controller {
 			redirect('apply/step_4');
 		}
 
-		$data = array();
-
-		$data = array_merge((array) $data, $this->lang->language);
+		$data['page_output'] = $this->load->view('apply/step_3', $this->lang->language, TRUE);
 
 		// Load the view file
-		$this->load->view('apply/global', array(
-			'page_output' => $this->parser->parse('apply/step_3', $data, TRUE)
-		));
+		$this->load->view('apply/global', $data);
 	}
 
 	public function step_4() {
@@ -121,40 +105,28 @@ class Apply extends Public_Controller {
 			redirect('apply/review');
 		}
 
-		$data = array();
-
-		$data = array_merge((array) $data, $this->lang->language);
+		$data['page_output'] = $this->load->view('apply/step_4', $this->lang->language, TRUE);
 
 		// Load the view file
-		$this->load->view('apply/global', array(
-			'page_output' => $this->parser->parse('apply/step_4', $data, TRUE)
-		));
+		$this->load->view('apply/global', $data);
 	}
 
 	public function review() {
 		$this->lang->load('review');
 
-		$data = array();
-
-		$data = array_merge((array) $data, $this->lang->language);
+		$data['page_output'] = $this->load->view('apply/review', $this->lang->language, TRUE);
 
 		// Load the view file
-		$this->load->view('apply/global', array(
-			'page_output' => $this->parser->parse('apply/review', $data, TRUE)
-		));
+		$this->load->view('apply/global', $data);
 	}
 
 	public function complete() {
 		$this->lang->load('complete');
 
-		$data = array();
-
-		$data = array_merge((array) $data, $this->lang->language);
+		$data['page_output'] = $this->load->view('apply/complete', $this->lang->language, TRUE);
 
 		// Load the view file
-		$this->load->view('apply/global', array(
-			'page_output' => $this->parser->parse('apply/complete', $data, TRUE)
-		));
+		$this->load->view('apply/global', $data);
 	}
 
 }
