@@ -19,7 +19,7 @@
 					</li>
 					<li>
 						<a href="<?php echo site_url('apply/change/hindi'); ?>" title="Hindi">
-							<img src="<?php echo base_url(); ?>assets/img/flags/cn.gif" alt="Hindi" />
+							<img src="<?php echo base_url(); ?>assets/img/flags/in.png" alt="Hindi" />
 						</a>
 					</li>
 				</ul>
