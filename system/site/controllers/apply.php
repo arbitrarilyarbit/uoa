@@ -1,12 +1,12 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class User extends Public_Controller {
+class Apply extends Public_Controller {
 
 	public function __construct() {
 		parent::__construct();
 
 		$this->load->library('form_validation');
-		$this->load->model('user/user_m');
+		$this->load->model('apply/apply_m');
 		$this->lang->load('global');
 	}
 
@@ -18,8 +18,8 @@ class User extends Public_Controller {
 		$data = array_merge((array) $data, $this->lang->language);
 
 		// Load the view file
-		$this->load->view('user/global', array(
-			'page_output' => $this->parser->parse('user/main', $data, TRUE)
+		$this->load->view('apply/global', array(
+			'page_output' => $this->parser->parse('apply/main', $data, TRUE)
 		));
 	}
 
@@ -37,7 +37,7 @@ class User extends Public_Controller {
 
 		// If the form validation passed
 		if ( $this->form_validation->run() ) {
-			redirect('user/step_2');
+			redirect('apply/step_2');
 		}
 
 		$data = array();
@@ -45,8 +45,8 @@ class User extends Public_Controller {
 		$data = array_merge((array) $data, $this->lang->language);
 
 		// Load the view file
-		$this->load->view('user/global', array(
-			'page_output' => $this->parser->parse('user/step_1', $data, TRUE)
+		$this->load->view('apply/global', array(
+			'page_output' => $this->parser->parse('apply/step_1', $data, TRUE)
 		));
 	}
 
@@ -64,7 +64,7 @@ class User extends Public_Controller {
 
 		// If the form validation passed
 		if ( $this->form_validation->run() ) {
-			redirect('user/step_3');
+			redirect('apply/step_3');
 		}
 
 		$data = array();
@@ -72,8 +72,8 @@ class User extends Public_Controller {
 		$data = array_merge((array) $data, $this->lang->language);
 
 		// Load the view file
-		$this->load->view('user/global', array(
-			'page_output' => $this->parser->parse('user/step_2', $data, TRUE)
+		$this->load->view('apply/global', array(
+			'page_output' => $this->parser->parse('apply/step_2', $data, TRUE)
 		));
 	}
 
@@ -91,7 +91,7 @@ class User extends Public_Controller {
 
 		// If the form validation passed
 		if ( $this->form_validation->run() ) {
-			redirect('user/step_4');
+			redirect('apply/step_4');
 		}
 
 		$data = array();
@@ -99,8 +99,8 @@ class User extends Public_Controller {
 		$data = array_merge((array) $data, $this->lang->language);
 
 		// Load the view file
-		$this->load->view('user/global', array(
-			'page_output' => $this->parser->parse('user/step_3', $data, TRUE)
+		$this->load->view('apply/global', array(
+			'page_output' => $this->parser->parse('apply/step_3', $data, TRUE)
 		));
 	}
 
@@ -118,7 +118,7 @@ class User extends Public_Controller {
 
 		// If the form validation passed
 		if ( $this->form_validation->run() ) {
-			redirect('user/review');
+			redirect('apply/review');
 		}
 
 		$data = array();
@@ -126,8 +126,8 @@ class User extends Public_Controller {
 		$data = array_merge((array) $data, $this->lang->language);
 
 		// Load the view file
-		$this->load->view('user/global', array(
-			'page_output' => $this->parser->parse('user/step_4', $data, TRUE)
+		$this->load->view('apply/global', array(
+			'page_output' => $this->parser->parse('apply/step_4', $data, TRUE)
 		));
 	}
 
@@ -139,8 +139,8 @@ class User extends Public_Controller {
 		$data = array_merge((array) $data, $this->lang->language);
 
 		// Load the view file
-		$this->load->view('user/global', array(
-			'page_output' => $this->parser->parse('user/review', $data, TRUE)
+		$this->load->view('apply/global', array(
+			'page_output' => $this->parser->parse('apply/review', $data, TRUE)
 		));
 	}
 
@@ -152,8 +152,8 @@ class User extends Public_Controller {
 		$data = array_merge((array) $data, $this->lang->language);
 
 		// Load the view file
-		$this->load->view('user/global', array(
-			'page_output' => $this->parser->parse('user/complete', $data, TRUE)
+		$this->load->view('apply/global', array(
+			'page_output' => $this->parser->parse('apply/complete', $data, TRUE)
 		));
 	}
 
